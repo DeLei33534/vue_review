@@ -3,13 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>初探Vue</title>
+    <title>初探Vue_Vue.js有什么不同</title>
   </head>
   <body>
-    <div id="root">
-      <p id="pp">
-        初探Vue
-      </p>
-    </div>
+    <script>
+      /*
+        演示代码(jQuery)
+          在指定DOM中插入一个元素，并绑定点击事件
+        
+        缺陷
+          虽然代码并不复杂
+          但是视图代码与业务逻辑耦合度太高
+          随着功能的增加，代码会越来越难以维护
+      */
+      if (showBtn) {
+        var btn = $("<button>Click me</button>");
+        btn.on("click", function () {
+          console.log("deleidelei");
+        });
+        $("#app").append(btn);
+      }
+
+      /*
+        演示代码(Vue.js)
+          实现同样功能，Vue会通过MVVM的模式
+          将其拆分为 视图 与 数据 两部分，将其分离
+          使得用户只需要关注数据，Vue会自动完成DOM相关操作
+      */
+      /*
+        视图
+          <body>
+             <div id="app">
+                <button v-if="showBtn" v-on:click="handleClick">Click me</button>
+             </div>
+          </body>
+      */
+      // 数据
+      /*
+        new Vue({
+          el: "#app",
+          data: {
+            showBtn: true,
+          },
+
+          methods: {
+            handleClick: function () {
+              console.log("deleidelei");
+            },
+          },
+        });
+      */
+    </script>
   </body>
 </html>
