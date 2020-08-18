@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue基本开发模式示例</title>
+  </head>
+  <body>
+    <!-- 引入CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+
+    <!-- 视图:循环展示图书列表 -->
+    <div id="app">
+      <ul>
+        <li v-for="book in books">{{book.name}}</li>
+      </ul>
+    </div>
+
+    <!-- 数据 -->
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          books: [
+            { name: "《Vue.js 实战1》" },
+            { name: "《Vue.js 实战2》" },
+            { name: "《Vue.js 实战3》" },
+            { name: "《Vue.js 实战4》" },
+            { name: "《Vue.js 实战5》" },
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>

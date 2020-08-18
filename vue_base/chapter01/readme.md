@@ -27,3 +27,24 @@
    2. 当视图层 View 发生变化时，会自动更新到视图模型层(ViewModel)，反之亦然
    3. 视图与视图模型之间，通过双向绑定(data-binding)建立联系
       ![image-20200818085250596](assets/image-20200818085250596.png)
+
+## 二、Vue 的使用
+
+1. 传统前端开发模式
+   1. 万金油技术栈
+      jQuery + RequireJS/SeaJS + artTemplate(doT) + Gulp(Grunt)
+   2. 优点：简单、高效、实用
+   3. 缺点：不完全适用现在更复杂的业务场景(如 SPA、组件解耦等)
+2. Vue.js 开发模式
+   1. Vue 是一个渐进式的 JS 开发框架，实际开发中，可以根据项目需求，从不同的维度配合相应插件及组件库来进行使用
+   2. 对于开发简单的页面或小应用，可以通过 script 标签加载 CDN 文件，也可以下载代码，通过路径引入
+   ```
+   <!-- 自动识别最新稳定版本的Vue.js -->
+   <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+   <!-- 指定某个具体版本的Vue.js -->
+   <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+   <!-- 相对路径引入Vue.js -->
+   <script src="./路径/vue.min.js"></script>
+   ```
+   引入 Vue.js 框架后，在 body 底部使用 new Vue()的方式创建一个 Vue 实例
+   以上即为 Vue 最基本的开发步骤,完整代码参考[demo02]()
