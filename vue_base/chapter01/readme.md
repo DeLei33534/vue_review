@@ -48,3 +48,4 @@
    ```
    引入 Vue.js 框架后，在 body 底部使用 new Vue()的方式创建一个 Vue 实例
    以上即为 Vue 最基本的开发步骤，完整代码参考[demo02](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter01/demo02.html)
+   3. 对于业务逻辑复杂，对前端工程有要求的项目，可以使用 Vue 单文件的形式配合 webpack 进行开发; 必要时还可以使用 Vuex 进行状态管理，使用 vue-router 进行路由管理，提高开发效率
