@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello World</title>
+  </head>
+  <body>
+    <!-- 引入CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+
+    <div id="app">
+      <input type="text" v-model="name" placeholder="请输入你的名字" />
+      <h1>Hello，{{name}}!</h1>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          name: "",
+        },
+      });
+    </script>
+    <!-- 输入框输入的内容，会实时展示在页面 hl 标签内 -->
+  </body>
+</html>
