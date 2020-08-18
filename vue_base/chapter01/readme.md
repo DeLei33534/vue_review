@@ -14,7 +14,7 @@
    3. 编码简洁、体积小、效率高
    4. 可以轻松引入 vue 插件或其它第三方库辅助开发
    5. 提供了 Web 开发中常见的高级功能
-      1. 解耦视图与数据(demo01)
+      1. 解耦视图与数据([demo01.html](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter01/demo01.html))
       2. 可复用组件
       3. 前端路由
       4. 状态管理
