@@ -63,4 +63,8 @@
    4. 在[demo01](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter02/demo01.html)中，input标签上应用了v-model指令(v-model="name")，它的作用是将Vue实例的data选项中的name数据，与标签input进行数据绑定
 
 ## 二、Vue生命周期
+
+![Vue 实例生命周期(官网)](https://cn.vuejs.org/images/lifecycle.png)
+<center>Vue 实例生命周期</center>
+
 ## 三、Vue的简单应用
