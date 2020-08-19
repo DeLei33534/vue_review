@@ -65,6 +65,6 @@
 ## 二、Vue生命周期
 
 ![Vue 实例生命周期(官网)](https://cn.vuejs.org/images/lifecycle.png)
-<center>Vue 实例生命周期</center>
+$$Vue 实例生命周期$$
 
 ## 三、Vue的简单应用
