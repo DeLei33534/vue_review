@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue生命周期钩子</title>
+    <!-- 引入CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{message}}</p>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          message: "正经人谁写日记？",
+        },
+
+        beforeCreate: function () {
+          // console.group()方法
+          // 用于设置分组信息的起始位置
+          // 该位置之后的所有信息将写入分组
+          console.group("======beforeCreate_创建前状态======");
+
+          // console 打印消息时
+          // 使用 %c 可以指定随后的文本样式
+          // %s 表示字符串占位符
+          console.log("%c%s", "color:skyblue", "el:        " + this.$el); //undefined
+          console.log("%c%s", "color:skyblue", "data:      " + this.$data); //undefined
+          console.log("%c%s", "color:skyblue", "message:   " + this.message);
+        },
+
+        created: function () {
+          console.group("======create_创建完毕状态======");
+          console.log("%c%s", "color:skyblue", "el:        " + this.$el); //undefined
+          console.log("%c%s", "color:skyblue", "data:      " + this.$data); //已初始化
+          console.log("%c%s", "color:skyblue", "message:   " + this.message); //已初始化
+        },
+
+        beforeMount: function () {
+          console.group("======beforeMount_挂载前状态======");
+          console.log("%c%s", "color:skyblue", "el:        " + this.$el); //已初始化
+          console.log(this.$el);
+          console.log("%c%s", "color:skyblue", "data:      " + this.$data);
+          console.log("%c%s", "color:skyblue", "message:   " + this.message);
+        },
+
+        mounted: function () {
+          console.group("======mounted_挂载完成状态======");
+          console.log("%c%s", "color:skyblue", "el:        " + this.$el);
+          console.log(this.$el);
+          console.log("%c%s", "color:skyblue", "data:      " + this.$data);
+          console.log("%c%s", "color:skyblue", "message:   " + this.message);
+        },
+
+        beforeUpdate: function () {
+          console.group("======beforeUpdate_更新前状态======");
+          console.log("%c%s", "color:skyblue", "el:        " + this.$el); //已初始化
+          console.log(this.$el);
+          console.log("%c%s", "color:skyblue", "data:      " + this.$data);
+          console.log("%c%s", "color:skyblue", "message:   " + this.message);
+        },
+
+        updated: function () {
+          console.group("======updated_更新完成状态======");
+          console.log("%c%s", "color:skyblue", "el:        " + this.$el); //已初始化
+          console.log(this.$el);
+          console.log("%c%s", "color:skyblue", "data:      " + this.$data);
+          console.log("%c%s", "color:skyblue", "message:   " + this.message);
+        },
+
+        beforeDestroy: function () {
+          console.group("======beforeDestroy_销毁前状态======");
+          console.log("%c%s", "color:skyblue", "el:        " + this.$el); //已初始化
+          console.log(this.$el);
+          console.log("%c%s", "color:skyblue", "data:      " + this.$data);
+          console.log("%c%s", "color:skyblue", "message:   " + this.message);
+        },
+
+        destroyed: function () {
+          console.group("======destroyed_销毁完成状态======");
+          console.log("%c%s", "color:skyblue", "el:        " + this.$el); //已初始化
+          console.log(this.$el);
+          console.log("%c%s", "color:skyblue", "data:      " + this.$data);
+          console.log("%c%s", "color:skyblue", "message:   " + this.message);
+        },
+      });
+
+      // 参考：https://segmentfault.com/a/1190000008010666
+    </script>
+  </body>
+</html>
