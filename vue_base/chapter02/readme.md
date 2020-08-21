@@ -1,4 +1,6 @@
-## 一、第一个 Vue 应用
+## 一、Vue 实例与数据绑定
+
+### 1.1、第一个 Vue 应用
 
 1. Vue 最核心的功能：双向数据绑定([demo01](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter02/demo01.html))
 2. Vue 应用的创建
@@ -69,7 +71,7 @@
 
    4. 在[demo01](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter02/demo01.html)中，input 标签上应用了 v-model 指令(v-model="name")，它的作用是将 Vue 实例的 data 选项中的 name 数据，与标签 input 进行数据绑定
 
-## 二、Vue 生命周期
+### 1.2、Vue 生命周期
 
 1. 即每个 Vue 实例被创建时，经过的一系列初始化过程
 2. 在初始化过程中，可以通过调用相应的生命周期钩子，在合适的时机执行所需的业务逻辑
@@ -105,7 +107,12 @@
    })
    ```
 
-5. 实例: [demo02]()
+5. 实例: [demo02](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter02/demo02.html)
    ![Vue 实例生命周期(官网)](https://cn.vuejs.org/images/lifecycle.png)
 
-## 三、Vue 的简单应用
+### 1.3、Vue 的简单应用
+
+1. [插值与表达式]()
+2. [过滤器]()
+
+## 二、Vue 指令与事件
