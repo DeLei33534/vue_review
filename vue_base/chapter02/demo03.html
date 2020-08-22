@@ -33,49 +33,131 @@
 
     <!--
       示例二
-      实时显示当前时间，每秒更新
+        实时显示当前时间，每秒更新
+    
+      <div id="app">
+        {{date}}
+      </div>
+
+      <script>
+        var app = new Vue({
+          el: "#app",
+          data: {
+            date: new Date(),
+          },
+
+          mounted: function () {
+            var _this = this; //声明一个变量指向Vue实例this, 保证作用域一致
+
+            // 定时器实现定时周期性更新
+            this.timer = setInterval(function () {
+              _this.date = new Date(); //修改数据date
+            }, 1000);
+
+            // this.timer = setInterval(function () {
+            //   this.date = new Date();
+            //   console.log(this.date + "1");
+            //   console.log(this);
+            // });
+
+            // this.timer = setInterval(() => {
+            //   this.date = new Date();
+            //   console.log(this + "1");
+            //   console.log(_this + "2");
+            //   console.log(this === _this);
+            // });
+          },
+
+          beforeDestroy: function () {
+            if (this.timer) {
+              clearInterval(this.timer); //在vue实例销毁前，清除定时器
+            }
+          },
+        });
+
+        console.log(app);
+      </script>
     -->
-    <div id="app">
-      {{date}}
-    </div>
 
-    <script>
-      var app = new Vue({
-        el: "#app",
-        data: {
-          date: new Date(),
-        },
+    <!--
+      示例三
+        使用v-html可以输出html结构
+        而不是经过数据解释处理后的纯文本
+    
+      <div id="app">
+        <span>v-html</span>
+        <br />
+        <span v-html="link"></span>
+        <br />
+        <br />
+        <span>v-pre</span>
+        <br />
+        <span v-pre>{{link}}</span>
+        <br />
+        <br />
+        <span>双括号插值</span>
+        <br />
+        <span>{{link}}</span>
+      </div>
 
-        mounted: function () {
-          var _this = this; //声明一个变量指向Vue实例this, 保证作用域一致
+      <script>
+        var app = new Vue({
+          el: "#app",
+          data: {
+            // 使用v-html, link的内容会被解析为具有点击功能的a标签
+            // 注意，如果将用户产生的内容使用 v-html 输出
+            // 存在安全隐患, 有可能导致 xss 攻击
+            // 一般会在服务端对用户提交的内容进行处理
+            // 比如可将尖括号"<>"进行转义
 
-          // 定时器实现定时周期性更新
-          this.timer = setInterval(function () {
-            _this.date = new Date(); //修改数据date
-          }, 1000);
+            // 使用v-pre, 可以跳过设置了该指令的元素及其子元素的编译过程
+            // 单纯原样打印{{}}的所有内容
+            link: `<a href="https://www.bilibili.com">BiliBili</a>`,
+          },
+        });
+      </script>
+    -->
 
-          // this.timer = setInterval(function () {
-          //   this.date = new Date();
-          //   console.log(this.date + "1");
-          //   console.log(this);
-          // });
+    <!--
+      示例四
+        在{{}}中除了进行简单的属性值绑定
+        还可以使用JS表达式进行简单的运算
+    
+      <div id="app">
+        {{num/10}},{{isOk?"确定":"取消"}},{{text.split (",").reverse().join(",")}}
+      </div>
 
-          // this.timer = setInterval(() => {
-          //   this.date = new Date();
-          //   console.log(this + "1");
-          //   console.log(_this + "2");
-          //   console.log(this === _this);
-          // });
-        },
+      <script>
+        var app = new Vue({
+          el: "#app",
+          data: {
+            num: 100,
+            isOk: true,
 
-        beforeDestroy: function () {
-          if (this.timer) {
-            clearInterval(this.timer); //在vue实例销毁前，清除定时器
-          }
-        },
-      });
+            // split()方法用于
+            // 通过指定分隔符
+            // 把一个字符串分割成字符串数组
 
-      console.log(app);
-    </script>
+            // reverse()方法用于
+            // 颠倒数组中元素的顺序
+
+            // join() 方法用于
+            // 把数组中的所有元素，放入一个字符串
+            // 并通过指定分隔符进行分隔
+            text: "335,34,43,533",
+          },
+        });
+      </script>
+    -->
+
+    <!--
+      使用表达式时, Vue只支持单个表达式, 不支持语句和流控制
+      且在表达式中, 不能使用用户自定义的全局变量
+      只能使用Vue白名单内的全局变量, 例如Math和Date
+      
+      无效示例：
+      {{var book = "Vue.js实战"}} -- 不是表达式
+      {{if (ok) return msg}} -- 不能使用流程控制, 可以改为三元运算
+    -->
   </body>
 </html>
