@@ -8,8 +8,74 @@
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
   </head>
   <body>
-    <div id="app"></div>
+    <!--
+      示例一
+        使用双大括号(Mustache语法)
+        是最基本的文本插值方法
+        它可以自动展示用户双向绑定的数据
+    
+      <div id="app">
+        {{bookName}}
+      </div>
 
-    <script></script>
+      <script>
+        var app = new Vue({
+          el: "#app",
+          data: {
+            // 双大括号中的内容会被替换为《Vue.js实战》
+            // 通过任何方法修改bookName的数据
+            // 双大括号中的内容都会随之实时更改
+            bookName: "《Vue.js实战》",
+          },
+        });
+      </script>
+    -->
+
+    <!--
+      示例二
+      实时显示当前时间，每秒更新
+    -->
+    <div id="app">
+      {{date}}
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          date: new Date(),
+        },
+
+        mounted: function () {
+          var _this = this; //声明一个变量指向Vue实例this, 保证作用域一致
+
+          // 定时器实现定时周期性更新
+          this.timer = setInterval(function () {
+            _this.date = new Date(); //修改数据date
+          }, 1000);
+
+          // this.timer = setInterval(function () {
+          //   this.date = new Date();
+          //   console.log(this.date + "1");
+          //   console.log(this);
+          // });
+
+          // this.timer = setInterval(() => {
+          //   this.date = new Date();
+          //   console.log(this + "1");
+          //   console.log(_this + "2");
+          //   console.log(this === _this);
+          // });
+        },
+
+        beforeDestroy: function () {
+          if (this.timer) {
+            clearInterval(this.timer); //在vue实例销毁前，清除定时器
+          }
+        },
+      });
+
+      console.log(app);
+    </script>
   </body>
 </html>

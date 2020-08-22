@@ -112,7 +112,7 @@
 
 ### 1.3、Vue 的简单应用
 
-1. [插值与表达式]()
-2. [过滤器]()
+1. [插值与表达式](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter02/demo03.html)
+2. [过滤器](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter02/demo04.html)
 
 ## 二、Vue 指令与事件
