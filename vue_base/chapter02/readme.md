@@ -116,3 +116,5 @@
 2. [过滤器](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter02/demo04.html)
 
 ## 二、Vue 指令与事件
+1. 指令(Directives)是Vue模板中最常用的一项功能，一般以"v-"作为前缀
+2. 指令的主要功能，是当表达式的值改变时，将相应的行为应用到 DOM 上
