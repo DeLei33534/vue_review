@@ -116,9 +116,26 @@
 2. [过滤器](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter02/demo04.html)
 
 ## 二、Vue 指令与事件
-1. 指令(Directives)是Vue模板中最常用的一项功能，一般以"v-"作为前缀
-2. 指令的主要功能，是当表达式的值改变时，将相应的行为应用到DOM上: [demo05](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter02/demo05.html)
-3. 数据驱动DOM是Vue的核心理念, 所以在正常开发流程中, 不要主动操作DOM; 用户只需要维护好数据, 通过数据驱动Vue来处理DOM
+1. 数据驱动DOM是Vue的核心理念, 所以在正常开发流程中, 不要主动操作DOM; 用户只需要维护好数据, 通过数据驱动Vue来处理DOM
+2. 指令(Directives)是Vue模板中最常用的一项功能，一般以"v-"作为前缀
+3. 指令的主要功能，是当表达式的值改变时，将相应的行为应用到DOM上: [demo05](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter02/demo05.html)
 4. Vue内置了很多指令, 如之前接触过的:  v-if、v-html以及v-pre等; 指令的应用可以快速完成常见的DOM操作, 如循环渲染、显示与隐藏等; 首先需要掌握的两种重要的指令如下:
    1. [v-bind](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter02/demo06.html): 基本用途是动态更新 HTML元素上的属性，比如id、class等
    2. [v-on](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter02/demo07.html): 基本用途是用来绑定事件监听器, 便于用户完成一些交互操作
+
+## 三、Vue 语法糖
+1. 语法糖是指在不影响代码功能的情况下, 添加某种更为简洁的语法实现同样的效果, 从而使程序开发更加方便
+2. 语法糖可以简化代码的书写
+3. Vue为v-bind和v-on指令, 都提供了语法糖, 或者说是缩写: 
+   1. v-bind
+   ```
+   <a v-bind:href= "url" >链接</a>
+   <!-- 缩写为 -->
+   <a :href= "url" >链接</a>
+   ```
+   2. v- on
+   ```
+   <button v-on:click="handleClose">click me!</button>
+   <!-- 缩写为 -->
+   <button @click="handleClose">click me!</button>
+   ```
