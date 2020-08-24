@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue计算属性示例</title>
+    <!-- 引入CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  </head>
+  <body>
+    <!--
+      <div id="app">
+        {{text.split(',').reverse().join(',')}}
+      </div>
+
+      上述表达式包含字符串分割、数组元素倒序以及
+      用指定字符串分隔，数组转换后的字符串
+      三种操作
+      逻辑复杂，不易于理解
+    -->
+
+    <!-- 使用计算属性进行改写 -->
+    <div id="app">
+      {{reverseText}}
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          text: "11,223,301,122,330",
+        },
+
+        computed: {
+          reverseText: function () {
+            // this指向Vue实例
+            return this.text.split(",").reverse().join(",");
+          },
+        },
+        /*
+          所有的计算属性均以函数的形式
+          书写在Vue实例的computed属性选项内
+          并最终返回经过处理后的计算结果
+        */
+      });
+    </script>
+  </body>
+</html>
