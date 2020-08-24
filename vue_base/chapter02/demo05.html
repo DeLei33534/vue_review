@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>指令与事件示例一</title>
+    <!-- 引入CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!--
+        当isShow的值为true时, p元素会被渲染显示
+        值为false时, p元素会被移除
+      -->
+      <p v-if="isShow">回首向来萧瑟处，归去，也无风雨也无晴。</p>
+      <button v-on:click="changeShow(2)">显示</button>
+      <!-- <button v-on:click="isShow = !isShow">隐藏</button> -->
+      <button v-on:click="changeShow(1)">隐藏</button>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          isShow: true,
+        },
+        methods: {
+          changeShow: function (index) {
+            if (index % 2 != 0) {
+              // if (this.isShow) {
+              this.isShow = false;
+              console.log(111);
+              console.log(this.isShow);
+            } else {
+              this.isShow = true;
+              console.log(222);
+              console.log(this.isShow);
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
