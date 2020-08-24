@@ -9,35 +9,26 @@
   </head>
   <body>
     <div id="app">
+      <a v-bind:href="url">链接</a>
+      <img v-bind:src="imgUrl" />
       <!--
-        当isShow的值为true时, p元素会被渲染显示
-        值为false时, p元素会被移除
+        通过v-bind, 将链接地址与图片地址
+        与定义的数据进行了绑定
+        当后续通过一些方式更改了地址数据后
+        页面链接与图片都会自动进行更新
+
+        上述示例最后渲染的结果为:
+        <a v-bind:href="https://www.github.com">链接</a>
+        <img v-bind:src="https://cn.vuejs.org/images/lifecycle.png"/>
       -->
-      <p v-if="isShow">回首向来萧瑟处，归去，也无风雨也无晴。</p>
-      <button v-on:click="changeShow(2)">显示</button>
-      <!-- <button v-on:click="isShow = !isShow">隐藏</button> -->
-      <button v-on:click="changeShow(1)">隐藏</button>
     </div>
 
     <script>
       var app = new Vue({
         el: "#app",
         data: {
-          isShow: true,
-        },
-        methods: {
-          changeShow: function (index) {
-            if (index % 2 != 0) {
-              // if (this.isShow) {
-              this.isShow = false;
-              console.log(111);
-              console.log(this.isShow);
-            } else {
-              this.isShow = true;
-              console.log(222);
-              console.log(this.isShow);
-            }
-          },
+          url: "https://www.github.com ",
+          imgUrl: "https://cn.vuejs.org/images/lifecycle.png",
         },
       });
     </script>

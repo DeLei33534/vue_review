@@ -8,38 +8,100 @@
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
   </head>
   <body>
+    <!--
+      在普通元素上，可以通过v-on监听原生DOM事件
+      如下，通过v-on:click，给button元素上绑定了一个点击事件监听
+      除了click外，像dblclick、keyup及mousemove等事件均可配合使用
+
+      表达式后可以是一个方法名
+      具体方法一般以函数形式，写在Vue实例的methods属性内
+      函数内的this指向当前Vue实例本身
+      因此可以直接使用 this.xxx 的形式来访问或修改Vue实例上的数据
+
+      <div id="app">
+        <p v-if="show">一段文本</p>
+        <button v-on:click="handleClose">click me!</button>
+      </div>
+    
+
+      <script>
+        var app = new Vue({
+          el: "#app",
+          data: {
+            show: true,
+          },
+          methods: {
+            handleClose: function () {
+              this.show = !this.show;
+            },
+          },
+        });
+      </script>
+    -->
+
+    <!--
+      表达式除了接方法名，也可以直接写一个内联语句
+    
+      <div id="app">
+        <p v-if="show">一段文本</p>
+        <button v-on:click="show = !show">click me!</button>
+      </div>
+
+      <script>
+        var app = new Vue({
+          el: "#app",
+          data: {
+            show: true,
+          },
+        });
+      </script>
+    -->
+
+    <!--
+      当绑定的事件需要处理复杂业务逻辑时
+      实际开发中一般还是在methods中声明方法
+      提高可读性与可维护性
+
+      methods里的方法如同data数据一样，也被Vue代理
+      所以可以像访问Vue数据一样来调用方法
+    -->
     <div id="app">
-      <!--
-        当isShow的值为true时, p元素会被渲染显示
-        值为false时, p元素会被移除
-      -->
-      <p v-if="isShow">回首向来萧瑟处，归去，也无风雨也无晴。</p>
-      <button v-on:click="changeShow(2)">显示</button>
-      <!-- <button v-on:click="isShow = !isShow">隐藏</button> -->
-      <button v-on:click="changeShow(1)">隐藏</button>
+      <p v-if="show">一段文本</p>
+      <button v-on:click="handleClose">click me!</button>
+      <button onclick="initTest()">init test</button>
+      <!-- <button onclick="console.log(1)">init test</button> -->
     </div>
 
     <script>
       var app = new Vue({
         el: "#app",
         data: {
-          isShow: true,
+          show: true,
         },
+
         methods: {
-          changeShow: function (index) {
-            if (index % 2 != 0) {
-              // if (this.isShow) {
-              this.isShow = false;
-              console.log(111);
-              console.log(this.isShow);
-            } else {
-              this.isShow = true;
-              console.log(222);
-              console.log(this.isShow);
-            }
+          init: function (text) {
+            console.log(text);
+          },
+          handleClose: function () {
+            this.changeClose();
+          },
+          changeClose: function () {
+            this.show = !this.show;
           },
         },
+
+        mounted: function () {
+          // 在初始化时进行方法调用
+          this.init("初始化时调用");
+        },
       });
+
+      // 在Vue实例外部调用
+      // app.init("外部调用");
+      initTest = function () {
+        app.init("test外部函数调用");
+      };
     </script>
   </body>
 </html>

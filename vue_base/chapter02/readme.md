@@ -122,4 +122,3 @@
 4. Vue内置了很多指令, 如之前接触过的:  v-if、v-html以及v-pre等; 指令的应用可以快速完成常见的DOM操作, 如循环渲染、显示与隐藏等; 首先需要掌握的两种重要的指令如下:
    1. [v-bind](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter02/demo06.html): 基本用途是动态更新 HTML元素上的属性，比如id、class等
    2. [v-on](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter02/demo07.html): 基本用途是用来绑定事件监听器, 便于用户完成一些交互操作
-5. 123
