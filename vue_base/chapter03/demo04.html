@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>计算属性的实用技巧</title>
+    <!-- 引入CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="app1">{{reversedText}}</div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          text: "112,221,223",
+        },
+      });
+
+      var app1 = new Vue({
+        el: "#app1",
+        computed: {
+          reversedText: function () {
+            // 这里依赖的是app的text数据
+            console.log(111);
+            return app.text.split(",").reverse().join(",");
+          },
+        },
+      });
+      // 上述两个Vue实例
+      // app1的计算属性reversedText中，依赖了app的数据text
+      // 当text发生变化时，实例app1中的计算属性也会发生变化
+    </script>
+  </body>
+</html>

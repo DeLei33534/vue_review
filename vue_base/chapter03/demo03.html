@@ -15,15 +15,28 @@
         el: "#app",
         data: {
           firstName: "feng",
-          firstName: "ch",
+          lastName: "ch",
         },
 
         computed: {
           fullName: {
             // getter用于读取
+            get: function () {
+              return this.firstName + " " + this.lastName;
+            },
+
+            // setter用于写入数据
+            set: function (newName) {
+              var name = newName.split(" ");
+              this.firstName = name[0];
+              this.lastName = name[name.length - 1];
+            },
           },
         },
       });
+      // 当执行app.fullName="XXX"时, setter就回被调用
+      // 此时数据firstName和lastName将会根据传入值进行更新
+      // 页面视图也将随之重新渲染
     </script>
   </body>
 </html>
