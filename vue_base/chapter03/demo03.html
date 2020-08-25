@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>计算属性中的getter与setter</title>
+    <!-- 引入CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app">姓名:{{fullName}}</div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          firstName: "feng",
+          firstName: "ch",
+        },
+
+        computed: {
+          fullName: {
+            // getter用于读取
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

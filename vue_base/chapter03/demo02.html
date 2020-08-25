@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue计算属性用法示例</title>
+    <!-- 引入CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      商品总价: {{prices}}
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          package01: [
+            {
+              name: "sony xz1",
+              price: 4399,
+              count: 2,
+            },
+            {
+              name: "sony 1000mx3",
+              price: 2499,
+              count: 2,
+            },
+          ],
+          package02: [
+            {
+              name: "iphone 8",
+              price: 6899,
+              count: 6,
+            },
+            {
+              name: "airpods 2",
+              price: 715,
+              count: 3,
+            },
+          ],
+        },
+        computed: {
+          prices: function () {
+            var prices = 0;
+
+            for (var i = 0; i < this.package01.length; i++) {
+              prices += this.package01[i].price * this.package01[i].count;
+            }
+
+            for (var i = 0; i < this.package02.length; i++) {
+              prices += this.package02[i].price * this.package02[i].count;
+            }
+
+            return prices;
+          },
+        },
+      });
+      // 当package02或package02中的商品信息有任何变化
+      // 比如商品数量、单价变化或增删商品种类时
+      // 计算属性prices便会自动更新
+      // 视图中展示的总价也会随之相应变化
+    </script>
+  </body>
+</html>
