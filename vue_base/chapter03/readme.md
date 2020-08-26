@@ -26,3 +26,4 @@
 2. 只有当计算属性依赖的数据发生变化时，它才会重新获取值
 3. 当使用 methods 定义的方法可以实现与计算属性相同的效果时，具体使用哪一种方式取决于是否需要缓存
 4. 计算属性一般应用在遍历数组与进行大量计算的情况
+5. 示例: [demo05](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter03/demo05.html)

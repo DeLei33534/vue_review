@@ -3,35 +3,104 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>计算属性的实用技巧</title>
+    <title>计算属性缓存</title>
     <!-- 引入CDN -->
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
-  </head>
-  <body>
-    <div id="app"></div>
-    <div id="app1">{{reversedText}}</div>
 
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--
+      计算属性实现
+
+      <div id="app">{{reversedText}}</div>
+      <script>
+        var app = new Vue({
+          el: "#app",
+          data: {
+            text: "112,221,22",
+          },
+
+          computed: {
+            reversedText: function () {
+              console.log(111);
+              return this.text.split(",").reverse().join(",");
+            },
+          },
+        });
+      </script>
+    -->
+
+    <!--
+      methods实现
+        注意，下面的reversedText是写在methods中的方法
+        需要带()，有需要可进行传参
+   
+      <div id="app">{{reversedText()}}</div>
+      <script>
+        var app = new Vue({
+          el: "#app",
+          data: {
+            text: "112,221,223",
+          },
+
+          methods: {
+            reversedText: function () {
+              return this.text.split(",").reverse().join(",");
+            },
+          },
+        });
+      </script>
+    -->
+
+    <!--
+      computed与methods对比
+        使用computed时，由于Date.now()不是响应式依赖
+        test的值也没有变化
+        所以计算属性now不会进行更新
+
+        使用methods则不同，只要页面或相应元素被重新渲染
+        methods就会被调用
+        从而执行now1函数，更新结果
+    -->
+    <div id="app">
+      <div style="width: 150px; height: 150px; background-color: #bfa;">
+        <p v-if="show">{{now}}</p>
+        <p v-if="show">{{now1()}}</p>
+      </div>
+
+      <button @click="show = !show">click me!</button>
+    </div>
     <script>
       var app = new Vue({
         el: "#app",
         data: {
-          text: "112,221,223",
+          test: "123123",
+          show: true,
         },
-      });
 
-      var app1 = new Vue({
-        el: "#app1",
         computed: {
-          reversedText: function () {
-            // 这里依赖的是app的text数据
-            console.log(111);
-            return app.text.split(",").reverse().join(",");
+          now: function () {
+            console.log(11111);
+            date = Date.now() + "-" + this.test;
+            return date;
+          },
+        },
+
+        methods: {
+          now1: function () {
+            console.log(11112);
+            date = Date.now() + "-" + this.test;
+            return date;
           },
         },
       });
-      // 上述两个Vue实例
-      // app1的计算属性reversedText中，依赖了app的数据text
-      // 当text发生变化时，实例app1中的计算属性也会发生变化
     </script>
   </body>
 </html>
