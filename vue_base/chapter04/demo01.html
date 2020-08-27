@@ -6,15 +6,111 @@
     <title>Vue计算属性示例</title>
     <!-- 引入CDN -->
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <style>
+      .static {
+        width: 100px;
+        height: 100px;
+      }
+      .active {
+        background-color: #bfa;
+        border-radius: 50%;
+      }
+      .error {
+        background-color: tomato;
+      }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
+    <!--
+      示例一
+        类名active依赖数据isActive
+        当其值为true时
+        会为所在div添加active类
+        改变不同的赋值可以实现class的动态添加
+        
+        示例最终渲染的效果为
+        <div class="active"></div>
+    -->
+    <!--
+      <div id="app">
+        <div :class="{'active' : isActive}"></div>
+        <button @click="isActive=!0 isActive">click me!</button>
+      </div>
+
+      <script>
+        var app = new Vue({
+          el: "#app",
+          data: {
+            isActive: true,
+          },
+        });
+      </script>
+    -->
+
+    <!--
+      示例二
+        对象中可以传入多个属性
+        根据不同的数据来动态切换对应的class
+        使用 v-bind 绑定的 class，可以与普通 class 共存
+    
+      <div id="app">
+        <div class="static" :class="{'active' : isActive,'error':isError}"></div>
+        <button @click="changeClass('Color Change!')">click me!</button>
+      </div>
+
+      <script>
+        var app = new Vue({
+          el: "#app",
+          data: {
+            isActive: true,
+            isError: false,
+          },
+          methods: {
+            changeClass: function (text) {
+              this.isActive = !this.isActive;
+              this.isError = !this.isError;
+              console.log(text);
+            },
+          },
+        });
+      </script>
+    -->
+
+    <!--
+      示例三
+        当:class的表达式过长或逻辑复杂时
+        可以为其绑定一个计算属性
+        一般用于条件多于两个的情况
+    -->
+    <div id="app">
+      <div class="static" :class="classes"></div>
+    </div>
 
     <script>
       var app = new Vue({
         el: "#app",
-        data: {},
+        data: {
+          isActive: true,
+          error: true,
+        },
+        computed: {
+          classes: function () {
+            active = this.isActive && !this.error;
+            // console.log(active);
+            return {
+              active,
+              // 不知道"text-fail"的具体作用，猜测用来标记文本失败状态
+              "text-fail": this.error && this.error.type === "fail",
+            };
+          },
+        },
       });
+      // console.log(app.classes);
+      // console.log(app.error);
+      // console.log(app.error.type);
+      // console.log(app.isActive.type);
+      // console.log(app.error.type === "fail");
+      // console.log((app.error && app.error.type) == "fail");
     </script>
   </body>
 </html>
