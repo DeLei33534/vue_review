@@ -16,6 +16,10 @@
    3. 当绑定 class 的表达式过长，逻辑复杂时，可以为其绑定计算属性，一般应用于表达式条件多于两个的情况
    4. 示例: [demo01](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter04/demo01.html)
 2. 数组语法
+   1. 当需要应用多个class时, 可以给:class绑定一个数组, 直接应用一个class列表
+   2. 可以使用三元表达式, 根据条件切换 class
+   3. 同对象语法一样, 也可以使用 data, computed和methods三种方法
+   4. 示例: [demo02]()
 3. 在组件上使用
 
 ## 三、绑定内联样式
