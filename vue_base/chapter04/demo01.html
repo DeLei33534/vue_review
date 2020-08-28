@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue计算属性示例</title>
+    <title>对象语法绑定v-bind</title>
     <!-- 引入CDN -->
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
     <style>
@@ -34,7 +34,7 @@
     <!--
       <div id="app">
         <div :class="{'active' : isActive}"></div>
-        <button @click="isActive=!0 isActive">click me!</button>
+        <button @click="isActive=!isActive">click me!</button>
       </div>
 
       <script>
