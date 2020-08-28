@@ -15,7 +15,7 @@
 5. 一般情况下，computed 预设只有 getter，即其默认属性为 getter，只能读取而无法改变值
 6. 只有 getter 的情况下，get 可以省略不写，所以在声明一个计算属性时，可以直接使用默认的写法
 7. 设置的 setter 会在手动修改计算属性值时触发，执行一些自定义操作[demo03](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter03/demo03.html)
-8. 计算属性的实用技巧[demo04]()
+8. 计算属性的实用技巧[demo04](https://github.com/DeLei33534/vue_review/blob/master/vue_base/chapter03/demo04.html)
    1. 计算属性可以依赖其它属性
    2. 计算属性不仅可以依赖当前 Vue 实例的数据，也可以依赖其他实例的数据
 9. 计算属性除了简单的文本插值外，还经常用于动态地设置元素的 class 样式名称以及 style 内联样式; 当使用组件开发时，计算属性也常用来动态传递 props
