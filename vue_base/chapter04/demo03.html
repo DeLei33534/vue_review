@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>在组件上使用v-bind</title>
+    <!-- 引入CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <style>
+      .article {
+        font-size: 30px;
+      }
+
+      .active {
+        background-color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      Vue.component("my_component", {
+        template: `
+          <p class='article'>
+             <span>test</span>
+          </p>`,
+
+        // 渲染失效
+        // template: `
+        //   <p class='article'>
+        //      <span>test</span>
+        //   </p>
+        //   <p>test1</p>`,
+
+        // template: `
+        // <div>
+        //   <p class='article'>
+        //     <span>test</span>
+        //   </p>
+        //   <p>test1</p>
+        // </div>`,
+      });
+    </script>
+
+    <div id="app">
+      <!-- <p>test1</p> -->
+      <my_component :class="{'active':isActive}"></my_component>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          isActive: true,
+        },
+      });
+    </script>
+  </body>
+</html>
