@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>行内样式使用v-bind</title>
+    <!-- 引入CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  </head>
+  <body>
+    <!--
+      示例一
+        渲染后的结果为:
+        <div style="color:red;font-size:14px">deleichfeng</div>
+      
+      <div id="app">
+        <div :style="{'color':color,'fontSize':fontSize+'px'}">deleichfeng</div>
+      </div>
+
+      <script>
+        var app = new Vue({
+          el: "#app",
+          data: {
+            color: "red",
+            fontSize: 14,
+          },
+        });
+      </script>
+    -->
+
+    <!--
+      示例二
+        使用data优化
+    
+      <div id="app">
+        <div :style="styles">deleichfeng</div>
+      </div>
+
+      <script>
+        var app = new Vue({
+          el: "#app",
+          data: {
+            styles: {
+              color: "red",
+              fontSize: 14 + "px",
+            },
+          },
+        });
+      </script>
+    -->
+
+    <!--
+      示例三
+        数组语法
+    
+      <div id="app">
+        <div :style="styles">deleichfeng</div>
+        <div :style="[style1,style2]">deleichfeng</div>
+      </div>
+
+      <script>
+        var app = new Vue({
+          el: "#app",
+          data: {
+            style1: {
+              color: "red",
+              fontSize: 20 + "px",
+            },
+            style2: {
+              background: "#bfa",
+            },
+          },
+
+          computed: {
+            styles: function () {
+              return [this.style1, this.style2];
+            },
+          },
+        });
+      </script>
+    -->
+  </body>
+</html>
